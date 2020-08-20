@@ -5,4 +5,4 @@ Machine learning using Tree Algorithm.
 
 Tree visualizer proves the system understood the frame of women and kid first as first defining characteristic is sex, followed by age.
 
-82% prediction algorithm. 
+execute front.py
