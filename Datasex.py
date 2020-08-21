@@ -18,8 +18,8 @@ def SexData(data):
     data.Survived[data.Sex == "female"].value_counts(normalize = True).plot(kind = "bar", alpha = 0.5, color = female_color)
     plt.title ("Women Survived")
 
-    plt.subplot2grid((2,3),(0,2))
+    plt.subplot2grid((2,3),(1,0))
     data.Sex[data.Survived == 1].value_counts(normalize = True).plot(kind = "bar", alpha = 0.5, color = [female_color,'b'])
-    plt.title ("Women Survived")
-    
+    plt.title ("Women vs Men Survival")
+
     plt.show()
