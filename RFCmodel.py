@@ -8,7 +8,7 @@ import os
 
 def RFC (train):
 
-    clean_data(train)
+
     x = train.loc[:,["Pclass","Age","Fare","Embarked","Sex","SibSp","Parch"]]
     y = train.loc[:,["Survived"]]
 

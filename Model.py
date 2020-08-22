@@ -1,8 +1,6 @@
 from CleanData import clean_data
 from sklearn import tree,model_selection
 def model (train):
-    clean_data(train)
-
     target = train["Survived"].values
     features_names = ["Pclass","Age","Fare","Embarked","Sex","SibSp","Parch"]
     features = train[features_names].values
