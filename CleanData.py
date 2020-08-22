@@ -1,7 +1,8 @@
 def clean_data(data):
     data["Fare"] = data["Fare"].fillna(data["Fare"].dropna().median())
     data["Age"] = data["Age"].fillna(data["Age"].dropna().median())
-
+    data.drop('Cabin',
+    axis=1, inplace=True)
     data.loc[data["Sex"] == "male", "Sex"] = 0
     data.loc[data["Sex"] == "female", "Sex"] = 1
 

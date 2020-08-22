@@ -12,7 +12,7 @@ clean_data(data)
 data.info()
 
 
-#RFC(data)clean_data(train)
+#RFC(data)
 model_2(data)
 #GenData(data)
 #SexData(data)
