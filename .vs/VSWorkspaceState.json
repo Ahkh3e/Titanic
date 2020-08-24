@@ -1,7 +1,11 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\tensorflow",
+    "\\tensorflow\\stream_executor",
+    "\\tensorflow\\stream_executor\\platform",
+    "\\tensorflow\\stream_executor\\platform\\default"
   ],
-  "SelectedNode": "\\Data.py",
+  "SelectedNode": "\\tensorflow",
   "PreviewInSolutionExplorer": false
 }

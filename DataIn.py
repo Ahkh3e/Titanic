@@ -1,4 +1,8 @@
+import torch
+from CleanData import clean_data
 import pandas as pd
-def Data_in():
-    data = pd.read_csv("train.csv")
-    return (data)
+
+train = pd.read_csv('train.csv')
+
+clean_data(train)
+train_tensor = torch.tensor(train.values)

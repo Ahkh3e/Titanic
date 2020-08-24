@@ -3,10 +3,10 @@ def clean_data(data):
     data["Age"] = data["Age"].fillna(data["Age"].dropna().median())
     data.drop('Cabin',
     axis=1, inplace=True)
-    data.loc[data["Sex"] == "male", "Sex"] = 0
-    data.loc[data["Sex"] == "female", "Sex"] = 1
+    data.Sex[data.Sex == "male"] = 0
+    data.Sex[data.Sex == "female"] = 1
 
     data["Embarked"] = data ["Embarked"].fillna("S")
-    data.loc[data["Embarked"] == "S", "Embarked"] = 0
-    data.loc[data["Embarked"] == "C", "Embarked"] = 1
-    data.loc[data["Embarked"] == "Q", "Embarked"] = 2
+    data.Embarked[data.Embarked == "S"] = 0
+    data.Embarked[data.Embarked == "C"] = 1
+    data.Embarked[data.Embarked == "Q"] = 2
