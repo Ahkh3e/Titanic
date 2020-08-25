@@ -68,39 +68,41 @@ train_X,test_X,train_Y,test_Y = train_test_split(x,y,
 
 n_samples = train_X.shape[0]
 
-X = tf.keras.Input(name="X", shape=(), dtype=tf.dtypes.float32)
-Y = tf.keras.Input(name="Y", shape=(), dtype=tf.dtypes.float32)
+X = tf.keras.Input(name="X", shape=(), dtype=tf.dtypes.float64)
+Y = tf.keras.Input(name="Y", shape=(), dtype=tf.dtypes.float64)
 
-W = tf.Variable(rng.randn(), name="weight")
-b = tf.Variable(rng.randn(), name="bias")
+
+W = tf.Variable(np.random.random(size=(1,)))
+b = tf.Variable(np.random.random(size=(1,)))
 
 # Construct a linear model (y=WX+b)
 pred = tf.add(tf.multiply(X, W), b)
 
 # Mean squared error This is the error in the calculation to try to minimize
+
 error = tf.reduce_sum(tf.pow(pred-Y, 2))/(2*n_samples)
+
 # Gradient descent
 #  Note, minimize() knows to modify W and b because Variable objects are trainable=True by default
 
-optimizer = tf.keras.optimizers.SGD(learning_rate).minimize(error,var_list=[W,b])
+optimizer = tf.keras.optimizers.SGD(learning_rate = learning_rate )
 
 # Initialize the variables (i.e. assign their default value)
-init = tf.global_variables_initializer()
+
 
 # Start training
-with tf.Session() as sess:
+with tf.compat.v1.Session() as sess:
 
     # Run the initializer
-    sess.run(init)
 
     # Fit all training data
     for epoch in range(training_epochs):
         for (x, y) in zip(train_X, train_Y):
-            sess.run(optimizer, feed_dict={X: x, Y: y})
+            sess.run(optimizer, feed_dict={X.ref(): x, Y.ref(): y})
 
         # Display logs per epoch step
         if (epoch+1) % display_step == 0:
-            c = sess.run(error, feed_dict={X: train_X, Y:train_Y})
+            c = sess.run(error, feed_dict={X.ref(): train_X, Y.ref():train_Y})
             print("Epoch:", '%04d' % (epoch+1), "error=", "{:.9f}".format(c), \
                 "W=", sess.run(W), "b=", sess.run(b))
 
